@@ -1,81 +1,61 @@
-# 🧩 Modos do Copiloto (Ask, Edit, Plan, Agent e Study)
+# 🧩 Modos do Copiloto (Agent, Ask, Plan e Study)
 
 ![dio/me](https://img.shields.io/badge/dio-me-ff2d55)
 ![IA](https://img.shields.io/badge/IA-Assistente%20Inteligente-blue)
 ![Prompt](https://img.shields.io/badge/Prompt-engineering-yellow)
 
-O Copiloto oferece diferentes **modos de interação** para você escolher como quer trabalhar: desde **tirar dúvidas sem mexer no código**, até **editar trechos específicos**, **planejar mudanças maiores** ou **delegar tarefas mais complexas** com um modo mais autônomo. A ideia é simples: você seleciona o modo que melhor combina com seu objetivo no momento e ganha velocidade com mais controle.
+O Copiloto oferece uma suíte de **quatro modos de interação** otimizados para atuar com a persona "Cortana" (direta, calma e técnica). Você pode escolher como quer trabalhar: desde **tirar dúvidas sem o risco de alterar o código**, até **planejar arquiteturas complexas**, **delegar a escrita de features inteiras** ou **estudar novos conceitos a fundo**. 
+
+A ideia é simples: selecione o modo que melhor combina com seu objetivo no momento e ganha velocidade com previsibilidade e controle absoluto sobre o seu projeto.
 
 ---
 
-# ❓ Ask
-O modo **Ask** é para fazer perguntas e entender coisas, **sem alterar seu código**. Você pode perguntar sobre um arquivo específico, um erro, uma função, uma stack trace ou até conceitos gerais.
+# 🤖 Agent Code
+O **Agent Code** é o seu parceiro de execução. Sua missão é transformar requisitos em código limpo e implementável. Ele segue um ciclo rigoroso de **(A) Descobrir, (P) Planejar, (I) Implementar, (V) Verificar e (F) Finalizar**.
 
-O Copiloto lê o contexto do projeto (arquivos abertos, seleção, etc.) e responde como um **“mentor técnico”**, explicando o que está acontecendo e por quê. **Ele não modifica nada** — só analisa e explica.
-
-📄 **Prompt:** [prompts/prompt-ask.md](prompts/prompt-ask.md)
-
----
-
-# ✏️ Edit
-O modo **Edit** serve para **alterar código existente**. Você seleciona um trecho (ou um arquivo inteiro), descreve o que quer mudar, e o Copiloto aplica a modificação diretamente.
-
-Ideal para:
-- refactors
-- ajustes de lógica
-- melhoria de performance
-- mudança de estilo
-- conversão de linguagem
-- adicionar logs
-- tratar erros
-
-Aqui o foco é: **“pegue isso que já existe e transforme”**.
-
-📄 **Prompt:** [prompts/prompt-edit.md](prompts/prompt-edit.md)
-
----
-
-# 🧭 Plan
-Quando você pede algo mais complexo, o Copiloto pode entrar em um modo de **planejamento**, onde ele **pensa e descreve os passos antes de sair codando**.
-
-Ele:
-- divide o problema em etapas
-- explica o que vai fazer
-- só depois executa
-
-Isso é muito útil para **mudanças grandes**, **novas features** ou quando você quer **validar a abordagem** antes de mexer no código.
-
-📄 **Prompt:** [prompts/prompt-plan.md](prompts/prompt-plan.md)
-
----
-
-# 🤖 Agent
-O **Agent** é o modo mais “autônomo”. Ele pode **navegar pelo projeto**, **criar arquivos**, **modificar múltiplos pontos** e **manter contexto entre passos**, como se fosse um dev júnior trabalhando com você.
-
-Você dá um objetivo (ex.: “implemente login com JWT”) e ele decide o que precisa ser feito em vários arquivos para chegar lá.
+* **Forte:** Respeita o código existente (Regra do Não-Toque), não alucina arquivos fora do escopo e sempre entrega os trechos com o caminho exato do arquivo comentado no topo.
+* **Ideal para:** Criar a tela inicial do Nummo em Kotlin, escrever o script de automação para a sua extensão web ou gerar a lógica de conexão WiFi do ESP32.
+* **Comportamento:** Pensa em edge cases antes de codar e encerra com perguntas rápidas para destravar a próxima etapa.
 
 📄 **Prompt:** [prompts/prompt-agent.md](prompts/prompt-agent.md)
 
 ---
 
+# ❓ Ask
+O modo **Ask** é para diagnósticos ágeis, leitura e investigação, **estritamente sem alterar seu código**. Ele atua com uma forte mentalidade de Quality Assurance (QA).
+
+* **Forte:** Vai direto à causa raiz do problema e propõe formas rápidas de validar o erro antes de sugerir qualquer solução.
+* **Ideal para:** Investigar por que um form não está preenchendo corretamente na sua extensão, analisar uma stack trace no console do Node.js ou debugar falhas no monitor serial do Arduino.
+* **Comportamento:** Proibido de gerar blocos enormes de código proativamente. Responde sempre no formato: Diagnóstico, Causa Raiz, Como Validar e Opções de Abordagem.
+
+📄 **Prompt:** [prompts/prompt-ask.md](prompts/prompt-ask.md)
+
+---
+
+# 🧭 Plan
+O modo **Plan** atua como um arquiteto de software. Ele serve para **pensar, prever riscos e estruturar os passos antes de escrever uma única linha de código**.
+
+* **Forte:** Foca em arquitetura (Clean, MVVM, MVC), mapeamento de dependências e estratégia de testes de integração.
+* **Ideal para:** Estruturar a arquitetura geral de um novo aplicativo de controle financeiro, planejar o esquema do banco de dados ou desenhar o fluxo de comunicação MQTT de um sistema de alarme IoT.
+* **Comportamento:** Proibido de implementar. Gera apenas documentos esquemáticos contendo Escopo, Estratégia, Arquivos Afetados, Riscos e um plano passo a passo revisável.
+
+📄 **Prompt:** [prompts/prompt-plan.md](prompts/prompt-plan.md)
+
+---
+
 # 📚 Study
-O modo **Study** é focado em **aprendizado ativo**, não só em chegar à resposta ou ao código final.
+O modo **Study** é a sua tutora técnica sênior. O foco aqui não é resolver um bug correndo, mas sim **construir o seu modelo mental** e garantir que você domine o fundamento por trás da ferramenta.
 
-Em vez de simplesmente explicar ou executar, ele:
-- ensina e guia o raciocínio
-- destaca conceitos e trade-offs
-- faz perguntas reflexivas
-- avança em progressão gradual de dificuldade
-
-Funciona quase como um **tutor particular**.
+* **Forte:** Usa analogias precisas, vai do simples ao avançado dependendo do seu nível e aplica checkpoints ativos para testar o que você absorveu.
+* **Ideal para:** Entender a fundo como funciona o ciclo de vida de uma Activity no Android, dominar conceitos de Inteligência Artificial ou aprender boas práticas de concorrência e testes.
+* **Comportamento:** Estrutura a resposta dividindo entre A Intuição do Conceito, A Prática (código limpo) e os Trade-offs/Armadilhas arquiteturais.
 
 📄 **Prompt:** [prompts/prompt-study.md](prompts/prompt-study.md)
 
 ---
 
 # 🧠 Resumo mental rápido
-- **Ask** → entender  
-- **Plan** → planejar antes de agir  
-- **Edit** → mudar código  
-- **Agent** → executar tarefas grandes sozinho  
-- **Study** → entendimento ativo  
+* **Agent** → Vai lá e coda (com segurança). 
+* **Ask** → Lê, investiga e diagnostica o problema. 
+* **Plan** → Arquiteta e mapeia riscos antes de agir. 
+* **Study** → Ensina o porquê das coisas.
